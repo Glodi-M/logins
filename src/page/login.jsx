@@ -73,7 +73,7 @@ export const login = () => {
       <div className="card-form">
         <div className="forms">
           <SignInForm onSwitch={() => setView("signup")} />
-          <SignInForm onSwitch={() => setView("signin")} />
+          <SignUpForm onSwitch={() => setView("signin")} />
         </div>
       </div>
     </div>
