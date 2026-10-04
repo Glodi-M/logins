@@ -44,14 +44,20 @@ const hero = ({ variant, title, subtitle }) => (
   </div>
 );
 
-const SignInForm = ({ onSwitch }) => <form className="signin"></form>;
+const SignInForm = ({ onSwitch }) => 
+<form className="signin">
+  <!-- Sign In form content goes here -->
+</form>;
 
-const SignUpForm = ({ onSwitch }) => <form className="signup"></form>;
+const SignUpForm = ({ onSwitch }) => 
+<form className="signup">
+  <!-- Sign Up form content goes here -->
+</form>;
 
 export const login = () => {
   const [view, setView] = useState("signin");
   return (
-    <div className={`card $(view)}`}>
+    <div className={`card ${view}`}>
       <CardNav view={view} onSelect={setView} />
 
       <div className="card-hero">
