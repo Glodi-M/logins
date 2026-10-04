@@ -1,8 +1,9 @@
 import { useState } from "react";
 import logo from "./logo.png";
-import facebook from "./facebook.png";
-import google from "./google.png";
-import apple from "./apple.png";
+import facebook from "../assets/facebook.png";
+import google from "../assets/google.png";
+import apple from "../assets/apple.png";
+import "./login.css";
 
 const CardNav = ({ view, onSelect }) => (
   <ul className="card-nav">
@@ -33,7 +34,7 @@ const CardNav = ({ view, onSelect }) => (
   </ul>
 );
 
-const hero = ({ variant, title, subtitle }) => (
+const Hero = ({ variant, title, subtitle }) => (
   <div className={`card-hero-content ${variant}`}>
     <h2>{title}</h2>
     <h3>{subtitle}</h3>
@@ -44,17 +45,11 @@ const hero = ({ variant, title, subtitle }) => (
   </div>
 );
 
-const SignInForm = ({ onSwitch }) => 
-<form className="signin">
-  <!-- Sign In form content goes here -->
-</form>;
+const SignInForm = ({ onSwitch }) => <form className="signin"></form>;
 
-const SignUpForm = ({ onSwitch }) => 
-<form className="signup">
-  <!-- Sign Up form content goes here -->
-</form>;
+const SignUpForm = ({ onSwitch }) => <form className="signup"></form>;
 
-export const login = () => {
+export const Login = () => {
   const [view, setView] = useState("signin");
   return (
     <div className={`card ${view}`}>
@@ -63,12 +58,12 @@ export const login = () => {
       <div className="card-hero">
         <div className="card-hero-bg"></div>
         <div className="card-hero-inner">
-          <hero
+          <Hero
             variant="signin"
             title="welcome back"
             subtitle="Please enter your credentials"
           />
-          <hero
+          <Hero
             variant="signup"
             title="Join us today"
             subtitle="Creating an account is quick"
