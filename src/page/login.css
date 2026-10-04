@@ -1,0 +1,205 @@
+:root {
+    -color-primary: #3cafd1;
+    --color-dark: #4497bf;
+    --color-muted: #747b92;
+    --color-text: #1b1f24;
+
+}
+
+p {
+    font-size: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+p a {
+    color:
+        var (--color-primary);
+    cursor: pointer;
+}
+
+.card {
+    display: flex;
+    align-content: stretch;
+    width: 680px;
+    height: 460px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow:
+        0 10px 30px rgba(40, 55, 75, 0.08),
+        0 30px 70px rgba(40, 55, 75, 0.07);
+}
+
+.card.signup .card-nav .active-bar {
+    top: 66.66%;
+}
+
+.card-nav {
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+}
+
+.card-nav .active-bar {
+    position: absolute;
+    top: 33.33%;
+    left: 0;
+    height: 33.33%;
+    transition:
+        0.4s ease-in-out;
+}
+
+.card-nav .active-bar::after {
+    content: "'";
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 6px;
+    height: 60px;
+    border-top-right-radius:
+        8px;
+    border-bottom-right-radius:
+        8px;
+    background:
+        var (--color-primary);
+}
+
+.card-nav img {
+    height: 44px;
+}
+
+.card-nav li {
+    flex: 1 1 auto;
+    display: grid;
+    place-items: center;
+}
+
+.card-nav li button.active {
+    color: var(--color-dark);
+}
+
+.card-nav button {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: 0.35;
+}
+
+.card-nav button:not(.active):hover {
+    opacity: 0.675;
+    color: var(--color-dark);
+}
+
+.card-hero {
+    position: relative;
+    margin: -30px 0;
+    flex: 0 0 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(40, 55, 75, 0.22);
+}
+
+.card-hero-bg {
+    position: absolute;
+    inset: -24px 0;
+    background:
+        url("hero.jpg") center / cover no-repeat;
+    transition:
+        translate 0.5s ease-in-out;
+}
+
+.card.signup .card-hero-bg {
+    translate:
+        0 -24px;
+}
+
+.card-hero-inner {
+    position:
+        absolute;
+    top: 0;
+    left: 0;
+    right:
+        0;
+    z-index: 1;
+    transition:
+        0.5s ease-in-out;
+}
+
+.card-hero-content {
+    height: 520px;
+    display: flex;
+    flex-direction:
+        column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition:
+        opacity 0.5s ease-in-out;
+}
+
+.card.signup .card-hero-inner {
+    top: -100%;
+}
+
+.card.signin .card-hero-content.signin,
+.card.signup .card-hero-content.signup {
+    opacity: 1;
+}
+
+.card-hero h2 {
+    color: #f9f9f9;
+    margin: 0 0 2px;
+    text-align: center;
+}
+
+.card-hero h3 {
+    color:
+        #ebebeb;
+    font-size: 13px;
+    text-align: center;
+}
+
+.card.signup .card-form .forms {
+    top: -100%;
+}
+
+.card-hero .terms {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.card-form {
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.card-form .forms {
+    position:
+        absolute;
+    height:
+        200%;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition:
+        0.5s ease-in-out;
+}
+
+.card-form form {
+    height: 460px;
+    padding: 24px;
+}
