@@ -74,6 +74,7 @@ p a {
     height: 460px;
     border-radius: 20px;
     background: #ffffff;
+    zoom: 1.35;
     box-shadow:
         0 10px 30px rgba(40, 55, 75, 0.08),
         0 30px 70px rgba(40, 55, 75, 0.07);
@@ -115,8 +116,9 @@ p a {
     background: var(--color-primary);
 }
 
-.card-nav img {
-    height: 34px;
+.card-nav .home {
+    font-size: 32px;
+    color: var(--color-text);
 }
 
 .card-nav li {

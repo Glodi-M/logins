@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "./logo.png";
 import facebook from "../assets/facebook.png";
 import google from "../assets/google.png";
 import apple from "../assets/apple.png";
@@ -8,7 +7,7 @@ import "./login.css";
 const CardNav = ({ view, onSelect }) => (
   <ul className="card-nav">
     <li>
-      <img src={logo} alt="Logo" />
+      <i className="ai-home home"></i>
       <span className="active-bar"></span>
     </li>
     <li>
@@ -61,14 +60,14 @@ const Socials = () => (
     </div>
   </>
 );
-const PasswordField = () => {
+const PasswordField = ({ id }) => {
   const [visible, setVisible] = useState(false);
   return (
     <div className="field">
-      <label htmlFor="password">Password</label>
+      <label htmlFor={id}>Password</label>
       <div className="input">
         <input
-          id="password"
+          id={id}
           type={visible ? "text" : "password"}
           placeholder="••••••••••••"
         />
@@ -82,10 +81,10 @@ const PasswordField = () => {
 const SignInForm = ({ onSwitch }) => (
   <form className="signin" onSubmit={(e) => e.preventDefault()}>
     <p>
-      don't have an account? <a onClick={onSwitch}>Sign Up</a>
+      Don't have an account? <a onClick={onSwitch}>Sign Up</a>
     </p>
     <div className="field">
-      <label htmlFor="email">Email</label>
+      <label htmlFor="signin-email">Email</label>
       <div className="input">
         <input
           type="email"
@@ -95,7 +94,7 @@ const SignInForm = ({ onSwitch }) => (
         <i className="ai-envelope"></i>
       </div>
     </div>
-    <PasswordField />
+    <PasswordField id="signin-password" />
     <div className="options">
       <label className="remember">
         <input type="checkbox" defaultChecked />
@@ -112,7 +111,7 @@ const SignInForm = ({ onSwitch }) => (
 );
 
 const SignUpForm = ({ onSwitch }) => (
-  <form className="signup">
+  <form className="signup" onSubmit={(e) => e.preventDefault()}>
     <p>
       Already have an account? <a onClick={onSwitch}>Sign In</a>
     </p>
@@ -134,7 +133,7 @@ const SignUpForm = ({ onSwitch }) => (
         <i className="ai-envelope"></i>
       </div>
     </div>
-    <PasswordField />
+    <PasswordField id="signup-password" />
 
     <button type="submit" className="btn-primary">
       Sign Up
@@ -154,7 +153,7 @@ export const Login = () => {
         <div className="card-hero-inner">
           <Hero
             variant="signin"
-            title="welcome back"
+            title="Welcome back"
             subtitle="Please enter your credentials"
           />
           <Hero
