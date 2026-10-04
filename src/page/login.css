@@ -1,34 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap");
+
 :root {
-    -color-primary: #3cafd1;
+    --color-primary: #3cafd1;
     --color-dark: #4497bf;
     --color-muted: #747b92;
     --color-text: #1b1f24;
+    --color-input: #f3f4f6;
+    --color-placeholder: #a3a8b8;
+    --color-page: #e8ebee;
+}
 
+/* Reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--color-page);
+    color: var(--color-text);
+    font-family: "Outfit", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
 }
 
 p {
     font-size: 12px;
     margin-bottom: 12px;
     text-align: center;
+    color: var(--color-muted);
 }
 
 p a {
-    color:
-        var (--color-primary);
+    color: var(--color-primary);
+    font-weight: 500;
     cursor: pointer;
 }
 
+/* Card */
+
 .card {
     display: flex;
-    align-content: stretch;
+    align-items: stretch;
     width: 680px;
     height: 460px;
     border-radius: 20px;
     background: #ffffff;
+    zoom: 1.35;
     box-shadow:
         0 10px 30px rgba(40, 55, 75, 0.08),
         0 30px 70px rgba(40, 55, 75, 0.07);
 }
+
+/* Nav */
 
 .card.signup .card-nav .active-bar {
     top: 66.66%;
@@ -41,6 +93,7 @@ p a {
     flex-direction: column;
     justify-content: center;
     width: 100px;
+    padding: 30px 0;
 }
 
 .card-nav .active-bar {
@@ -48,37 +101,30 @@ p a {
     top: 33.33%;
     left: 0;
     height: 33.33%;
-    transition:
-        0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 .card-nav .active-bar::after {
-    content: "'";
+    content: "";
     position: absolute;
     top: 50%;
     translate: 0 -50%;
     width: 6px;
     height: 60px;
-    border-top-right-radius:
-        8px;
-    border-bottom-right-radius:
-        8px;
-    background:
-        var (--color-primary);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: var(--color-primary);
 }
 
-.card-nav img {
-    height: 44px;
+.card-nav .home {
+    font-size: 32px;
+    color: var(--color-text);
 }
 
 .card-nav li {
-    flex: 1 1 auto;
+    flex: 1;
     display: grid;
     place-items: center;
-}
-
-.card-nav li button.active {
-    color: var(--color-dark);
 }
 
 .card-nav button {
@@ -89,7 +135,17 @@ p a {
     justify-content: center;
     width: 100%;
     height: 100%;
-    transition: 0.35;
+    font-size: 13px;
+    color: var(--color-muted);
+    transition: 0.35s;
+}
+
+.card-nav button i {
+    font-size: 20px;
+}
+
+.card-nav li button.active {
+    color: var(--color-dark);
 }
 
 .card-nav button:not(.active):hover {
@@ -97,12 +153,15 @@ p a {
     color: var(--color-dark);
 }
 
+/* Hero */
+
 .card-hero {
     position: relative;
     margin: -30px 0;
     flex: 0 0 300px;
     border-radius: 20px;
     overflow: hidden;
+    background: #0b0e12;
     box-shadow: 0 18px 45px rgba(40, 55, 75, 0.22);
 }
 
@@ -110,42 +169,37 @@ p a {
     position: absolute;
     inset: -24px 0;
     background:
-        url("hero.jpg") center / cover no-repeat;
-    transition:
-        translate 0.5s ease-in-out;
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%),
+        url("../assets/hero.jpg") center / cover no-repeat;
+    transition: translate 0.5s ease-in-out;
 }
 
 .card.signup .card-hero-bg {
-    translate:
-        0 -24px;
+    translate: 0 -24px;
 }
 
 .card-hero-inner {
-    position:
-        absolute;
+    position: absolute;
     top: 0;
     left: 0;
-    right:
-        0;
+    right: 0;
     z-index: 1;
-    transition:
-        0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+.card.signup .card-hero-inner {
+    top: -100%;
 }
 
 .card-hero-content {
     height: 520px;
     display: flex;
-    flex-direction:
-        column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px 40px;
     opacity: 0;
-    transition:
-        opacity 0.5s ease-in-out;
-}
-
-.card.signup .card-hero-inner {
-    top: -100%;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .card.signin .card-hero-content.signin,
@@ -156,18 +210,16 @@ p a {
 .card-hero h2 {
     color: #f9f9f9;
     margin: 0 0 2px;
+    font-size: 24px;
+    font-weight: 500;
     text-align: center;
 }
 
 .card-hero h3 {
-    color:
-        #ebebeb;
+    color: #ebebeb;
     font-size: 13px;
+    font-weight: 400;
     text-align: center;
-}
-
-.card.signup .card-form .forms {
-    top: -100%;
 }
 
 .card-hero .terms {
@@ -175,31 +227,165 @@ p a {
     align-items: center;
     gap: 6px;
     margin-top: 16px;
+    font-size: 11px;
+    color: #ebebeb;
     opacity: 0.5;
+    cursor: pointer;
     transition: opacity 0.3s;
 }
+
+.card-hero .terms:hover {
+    opacity: 0.9;
+}
+
+/* Forms */
 
 .card-form {
     position: relative;
     overflow: hidden;
-    padding: 24px;
     flex: 1 1 auto;
     min-width: 0;
 }
 
 .card-form .forms {
-    position:
-        absolute;
-    height:
-        200%;
+    position: absolute;
+    height: 200%;
     left: 0;
     right: 0;
     top: 0;
-    transition:
-        0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+.card.signup .card-form .forms {
+    top: -100%;
 }
 
 .card-form form {
     height: 460px;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-form form > p {
+    margin-bottom: 2px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.input {
+    position: relative;
+}
+
+.input input {
+    width: 100%;
+    height: 40px;
+    padding: 0 38px 0 12px;
+    border-radius: 8px;
+    background: var(--color-input);
+    font-size: 12px;
+    transition: box-shadow 0.2s;
+}
+
+.input input::placeholder {
+    color: var(--color-placeholder);
+}
+
+.input input:focus {
+    box-shadow: 0 0 0 2px rgba(60, 175, 209, 0.35);
+}
+
+.input i,
+.input button {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    translate: 0 -50%;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    color: var(--color-muted);
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0 10px;
+    font-size: 12px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-muted);
+    cursor: pointer;
+}
+
+.remember input {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.forgot {
+    color: var(--color-primary);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-primary {
+    width: 100%;
+    height: 42px;
+    margin-top: 6px;
+    border-radius: 8px;
+    background: var(--color-text);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.socials button {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--color-input);
+    transition: background 0.2s;
+}
+
+.socials button:hover {
+    background: #e7e9ee;
+}
+
+.socials img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }
