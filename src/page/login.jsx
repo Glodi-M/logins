@@ -45,9 +45,103 @@ const Hero = ({ variant, title, subtitle }) => (
   </div>
 );
 
-const SignInForm = ({ onSwitch }) => <form className="signin"></form>;
+const Socials = () => (
+  <>
+    <p>Or sign in with</p>
+    <div className="socials">
+      <button type="button">
+        <img src={google} alt="Google" />
+      </button>
+      <button type="button">
+        <img src={facebook} alt="Facebook" />
+      </button>
+      <button type="button">
+        <img src={apple} alt="Apple" />
+      </button>
+    </div>
+  </>
+);
+const PasswordField = () => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <div className="field">
+      <label htmlFor="password">Password</label>
+      <div className="input">
+        <input
+          id="password"
+          type={visible ? "text" : "password"}
+          placeholder="••••••••••••"
+        />
+        <button type="button" onClick={() => setVisible(!visible)}>
+          <i className={visible ? "ai-eye-open" : "ai-eye-slashed"}></i>
+        </button>
+      </div>
+    </div>
+  );
+};
+const SignInForm = ({ onSwitch }) => (
+  <form className="signin" onSubmit={(e) => e.preventDefault()}>
+    <p>
+      don't have an account? <a onClick={onSwitch}>Sign Up</a>
+    </p>
+    <div className="field">
+      <label htmlFor="email">Email</label>
+      <div className="input">
+        <input
+          type="email"
+          id="signin-email"
+          placeholder="youremail@gmail.com"
+        />
+        <i className="ai-envelope"></i>
+      </div>
+    </div>
+    <PasswordField />
+    <div className="options">
+      <label className="remember">
+        <input type="checkbox" defaultChecked />
+        Remember
+      </label>
+      <a className="forgot">Forgot password?</a>
+    </div>
 
-const SignUpForm = ({ onSwitch }) => <form className="signup"></form>;
+    <button type="submit" className="btn-primary">
+      Sign In
+    </button>
+    <Socials />
+  </form>
+);
+
+const SignUpForm = ({ onSwitch }) => (
+  <form className="signup">
+    <p>
+      Already have an account? <a onClick={onSwitch}>Sign In</a>
+    </p>
+    <div className="field">
+      <label htmlFor="signup-username">Username</label>
+      <div className="input">
+        <input id="signup-username" type="text" placeholder="myusername" />
+        <i className="ai-person"></i>
+      </div>
+    </div>
+    <div className="field">
+      <label htmlFor="signup-email">Email</label>
+      <div className="input">
+        <input
+          id="signup-email"
+          type="email"
+          placeholder="youremail@gmail.com"
+        />
+        <i className="ai-envelope"></i>
+      </div>
+    </div>
+    <PasswordField />
+
+    <button type="submit" className="btn-primary">
+      Sign Up
+    </button>
+    <Socials />
+  </form>
+);
 
 export const Login = () => {
   const [view, setView] = useState("signin");
