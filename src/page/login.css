@@ -161,6 +161,7 @@ p a {
     flex: 0 0 300px;
     border-radius: 20px;
     overflow: hidden;
+    overflow: clip;
     background: #0b0e12;
     box-shadow: 0 18px 45px rgba(40, 55, 75, 0.22);
 }
@@ -243,6 +244,7 @@ p a {
 .card-form {
     position: relative;
     overflow: hidden;
+    overflow: clip;
     flex: 1 1 auto;
     min-width: 0;
 }
@@ -388,4 +390,182 @@ p a {
     width: 18px;
     height: 18px;
     object-fit: contain;
+}
+
+/* Responsive */
+
+/* Laptop / small desktop: drop the zoom so the card fits */
+@media (max-width: 1100px), (max-height: 760px) {
+    body {
+        padding: 48px 16px;
+    }
+
+    .card {
+        zoom: 1;
+    }
+}
+
+/* Tablet */
+@media (max-width: 760px) {
+    .card {
+        width: 100%;
+        max-width: 640px;
+    }
+
+    .card-nav {
+        width: 84px;
+    }
+
+    .card-hero {
+        flex-basis: 240px;
+    }
+}
+
+/* Mobile: stacked layout with horizontal tabs */
+@media (max-width: 600px) {
+    body {
+        min-height: 100dvh;
+        padding: 16px;
+    }
+
+    .card {
+        flex-direction: column;
+        max-width: 420px;
+        height: auto;
+    }
+
+    /* Tabs */
+    .card-nav {
+        order: 2;
+        flex-direction: row;
+        width: 100%;
+        height: 64px;
+        padding: 0;
+    }
+
+    .card-nav .home {
+        font-size: 26px;
+    }
+
+    .card-nav button {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .card-nav button i {
+        font-size: 18px;
+    }
+
+    .card-nav .active-bar,
+    .card.signup .card-nav .active-bar {
+        top: 0;
+        left: 33.33%;
+        width: 33.33%;
+        height: 100%;
+    }
+
+    .card.signup .card-nav .active-bar {
+        left: 66.66%;
+    }
+
+    .card-nav .active-bar::after {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 0;
+        width: 56px;
+        height: 4px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    /* Hero banner */
+    .card-hero {
+        order: 1;
+        flex: 0 0 170px;
+        margin: 12px 12px 0;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(40, 55, 75, 0.18);
+    }
+
+    .card-hero-content {
+        height: 170px;
+        padding: 0 16px;
+    }
+
+    .card-hero h2 {
+        font-size: 22px;
+    }
+
+    .card-hero .terms {
+        margin-top: 10px;
+    }
+
+    /* Forms: only the active form is rendered, at its natural height */
+    .card-form {
+        order: 3;
+        flex: 0 0 auto;
+    }
+
+    .card-form .forms {
+        position: static;
+        height: auto;
+    }
+
+    .card-form form {
+        height: auto;
+        padding: 16px 20px 24px;
+        justify-content: flex-start;
+        animation: form-in 0.4s ease-out;
+    }
+
+    .card-form form[inert] {
+        display: none;
+    }
+
+    /* 16px prevents iOS from zooming on focus */
+    .input input {
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        height: 46px;
+        font-size: 14px;
+    }
+
+    .socials button {
+        flex: 1;
+        max-width: 80px;
+        height: 44px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    body {
+        padding: 8px;
+    }
+
+    .card-hero {
+        flex-basis: 140px;
+    }
+
+    .card-hero-content {
+        height: 140px;
+    }
+
+    .card-hero .terms {
+        display: none;
+    }
+
+    .card-form form {
+        padding: 12px 14px 20px;
+    }
+}
+
+@keyframes form-in {
+    from {
+        opacity: 0;
+        translate: 0 12px;
+    }
 }

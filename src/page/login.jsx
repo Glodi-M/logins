@@ -78,8 +78,8 @@ const PasswordField = ({ id }) => {
     </div>
   );
 };
-const SignInForm = ({ onSwitch }) => (
-  <form className="signin" onSubmit={(e) => e.preventDefault()}>
+const SignInForm = ({ onSwitch, inactive }) => (
+  <form className="signin" inert={inactive} onSubmit={(e) => e.preventDefault()}>
     <p>
       Don't have an account? <a onClick={onSwitch}>Sign Up</a>
     </p>
@@ -110,8 +110,8 @@ const SignInForm = ({ onSwitch }) => (
   </form>
 );
 
-const SignUpForm = ({ onSwitch }) => (
-  <form className="signup" onSubmit={(e) => e.preventDefault()}>
+const SignUpForm = ({ onSwitch, inactive }) => (
+  <form className="signup" inert={inactive} onSubmit={(e) => e.preventDefault()}>
     <p>
       Already have an account? <a onClick={onSwitch}>Sign In</a>
     </p>
@@ -166,8 +166,14 @@ export const Login = () => {
 
       <div className="card-form">
         <div className="forms">
-          <SignInForm onSwitch={() => setView("signup")} />
-          <SignUpForm onSwitch={() => setView("signin")} />
+          <SignInForm
+            onSwitch={() => setView("signup")}
+            inactive={view !== "signin"}
+          />
+          <SignUpForm
+            onSwitch={() => setView("signin")}
+            inactive={view !== "signup"}
+          />
         </div>
       </div>
     </div>
